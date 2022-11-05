@@ -7,7 +7,7 @@ import Link from '../src/Link';
 import ProTip from '../src/ProTip';
 import Copyright from '../src/Copyright';
 
-export default function About() {
+export default function EPub() {
   return (
     <Container maxWidth="lg">
       <Box

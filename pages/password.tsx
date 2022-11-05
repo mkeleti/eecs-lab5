@@ -9,22 +9,27 @@ import Copyright from "../src/Copyright";
 import { Stack, TextField } from "@mui/material";
 import { useState, useRef } from "react";
 
-export default function About() {
-  const [validated, setValidated] = useState({valid: true, error: ""});
+export default function Password() {
+  const [validated, setValidated] = useState({ valid: true, error: "" });
   const Password1 = useRef<string>();
   const Password2 = useRef<string>();
   function Validate() {
-    if (Password1.current?.value != undefined && Password2.current?.value != undefined ) {
+    if (
+      Password1.current?.value != undefined &&
+      Password2.current?.value != undefined
+    ) {
       if (
         Password1.current.value.length < 8 &&
         Password2.current.value.length < 8
       ) {
-        setValidated({valid: false,error: "Passwords must be at least 8 characters"});
+        setValidated({
+          valid: false,
+          error: "Passwords must be at least 8 characters",
+        });
       } else if (Password1.current.value === Password2.current.value) {
-        setValidated({valid: true,error: ""});
-      }
-      else {
-        setValidated({valid: false,error: "Passwords do not match"});
+        setValidated({ valid: true, error: "" });
+      } else {
+        setValidated({ valid: false, error: "Passwords do not match" });
       }
     }
   }
