@@ -8,6 +8,7 @@ import ProTip from "../src/ProTip";
 import Copyright from "../src/Copyright";
 import { Stack, TextField } from "@mui/material";
 import { useState, useRef } from "react";
+import Head from "next/head";
 
 export default function Password() {
   const [validated, setValidated] = useState({ valid: true, error: "" });
@@ -36,6 +37,9 @@ export default function Password() {
   let HelperText: string;
   return (
     <Container maxWidth="lg">
+      <Head>
+        <title>Password</title>
+      </Head>
       <Box
         sx={{
           my: 4,

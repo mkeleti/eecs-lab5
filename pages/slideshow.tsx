@@ -11,13 +11,12 @@ import { useState } from "react";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import { ButtonGroup, SvgIcon } from "@mui/material";
+import Head from "next/head";
 
 export default function About() {
   const [imgsource, setSource] = useState<imgsrc>({ src: "/cat1.jpg", id: 0 });
 
   type imgsrc = { src: string; id: number };
-
-
 
   const ChangeImage = (dir: "left" | "right") => {
     const images: imgsrc[] = [
@@ -46,33 +45,50 @@ export default function About() {
     setSource(newImage);
   };
 
-    return (
-      <Container maxWidth="lg">
-        <Box
-          sx={{
-            my: 4,
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "center",
-            alignItems: "center",
-          }}
+  return (
+    <Container maxWidth="lg">
+      <Head>
+        <title>Slideshow</title>
+      </Head>
+      <Box
+        sx={{
+          my: 4,
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <Typography variant="h4" component="h1" gutterBottom>
+          Cat Slideshow
+        </Typography>
+        <Image
+          src={imgsource.src}
+          alt="slideshow"
+          unoptimized
+          height={500}
+          width={500}
+        />
+        <ButtonGroup
+          variant="outlined"
+          aria-label="outlined primary button group"
         >
-          <Typography variant="h4" component="h1" gutterBottom>
-            Cat Slideshow
-          </Typography>
-          <Image src={imgsource.src}  alt="slideshow" unoptimized height={500} width={500} />
-          <ButtonGroup
-            variant="outlined"
-            aria-label="outlined primary button group"
+          <Button
+            onClick={() => {
+              ChangeImage("left");
+            }}
           >
-            <Button onClick={() => {ChangeImage("left");}}>
-              <ChevronLeftIcon color="primary" fontSize="large"/>
-            </Button>
-            <Button onClick={() => {ChangeImage("right");}}>
-              <ChevronRightIcon color="primary" fontSize="large"/>
-            </Button>
-          </ButtonGroup>
-        </Box>
-      </Container>
-    );
-  };
+            <ChevronLeftIcon color="primary" fontSize="large" />
+          </Button>
+          <Button
+            onClick={() => {
+              ChangeImage("right");
+            }}
+          >
+            <ChevronRightIcon color="primary" fontSize="large" />
+          </Button>
+        </ButtonGroup>
+      </Box>
+    </Container>
+  );
+}

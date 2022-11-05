@@ -19,6 +19,7 @@ export default function EPub() {
           alignItems: 'center',
         }}
       >
+        <h1>My Profile</h1>
       </Box>
     </Container>
   );
